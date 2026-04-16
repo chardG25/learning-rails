@@ -1,0 +1,9 @@
+<h1>Sales</h1>
+
+
+<% @sales.each do |sale|  %>
+<div>
+    <%= sale.product.name  %>
+    <%= sale.total_price  %>
+</div>
+<% end %>

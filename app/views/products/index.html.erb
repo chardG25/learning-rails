@@ -1,12 +1,30 @@
 <h1>Products</h1>
 
 <h1><%= link_to "New products", new_product_path %></h1>
+<h1><%= link_to "Sales", purchase_path %></h1>
 
-<div>
-  <% @products.each do |product|%>
-    <div>
-      <%= link_to product.name, product_path(product.id) %>
-    </div>
-  <% end %>
-</div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Products</th>
+          <th>Inventory</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product|  %>
+          <tr>
+            <td> <%= product.name %> </td>
+            <td> <%= product.inventory_count %> </td>
+            <td> <%= product.price %> </td>
+            <td> <%= link_to "Edit", product_path(product) %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
 

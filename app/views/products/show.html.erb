@@ -1,5 +1,7 @@
 <h1><%= @product.name %></h1>
 
+
+
 <%= link_to "Edit", edit_product_path(@product)  %>
-<%= link_to "Back", products_path %>
-<%= button_to "Delete", @product, method: :delete, data: {turbo_confirm: "Are you sure"}  %>
+<%= link_to "Back", products_path, class: "bg-red-500 p-2 w-20 h-10 text-white font-mono rounded-md font-bold tracking-wider" %>
+<%= button_to "Delete", @product, method: :delete, data: {turbo_confirm: "Are you sure you want to delete"}  %>

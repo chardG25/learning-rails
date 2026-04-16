@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sales
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -7,7 +8,13 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   root "products#index"
   resources :products
-  get "test", to: "products#test"
+  get "purchase", to: "products#purchase"
+  get "confirmPurchase/:id", to: "products#confirmPurchase", as: :confirmPurchase
+
+
+
+  # post "confirmPurchase/:id", to: "products#confirmPurchase", as: :confirmPurchase
+
 
 
   get "up" => "rails/health#show", as: :rails_health_check

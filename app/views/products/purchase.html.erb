@@ -1,0 +1,23 @@
+<h1>Sales</h1>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Menu</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+      
+    <tbody>
+<% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= link_to "Purchase", confirmPurchase_path(id: product.id) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
