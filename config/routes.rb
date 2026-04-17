@@ -11,6 +11,15 @@ Rails.application.routes.draw do
   get "purchase", to: "products#purchase"
   get "confirmPurchase/:id", to: "products#confirmPurchase", as: :confirmPurchase
 
+  get "cart/index"
+  get "cart", to: "carts#index", as: :cart
+  post "cart/add", to: "carts#add", as: :add_to_cart
+  delete "cart/remove", to: "carts#remove", as: :cart_remove
+  post "cart/clear", to: "carts#clear", as: :cart_clear
+  get "cart/receipt/:id", to: "carts#receipt", as: :cart_receipt
+  patch "cart/update", to: "carts#update", as: :cart_update
+
+
 
 
   # post "confirmPurchase/:id", to: "products#confirmPurchase", as: :confirmPurchase

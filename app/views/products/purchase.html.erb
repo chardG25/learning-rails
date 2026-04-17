@@ -1,23 +1,29 @@
 <h1>Sales</h1>
 
-<div>
+<%= form_with url: add_to_cart_path, method: :post do %>
   <table>
     <thead>
       <tr>
         <th>Menu</th>
         <th>Price</th>
-        <th>Action</th>
+        <th>Quantity</th>
       </tr>
     </thead>
-      
+
     <tbody>
       <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%= link_to "Purchase", confirmPurchase_path(id: product.id) %></td>
-      </tr>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td>
+            <%= number_field_tag "products[#{product.id}][quantity]", 0, min: 0 %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>
-</div>
+
+  <%= submit_tag "Add Selected to Cart" %>
+<% end %>
+
+<%= link_to "View Cart", cart_path %>

@@ -1,9 +1,21 @@
-<h1>Sales</h1>
+<h1>Sales History</h1>
 
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Total</th>
+    <th>Date</th>
+    <th>Action</th>
+  </tr>
 
-<% @sales.each do |sale|  %>
-<div>
-    <%= sale.product.name  %>
-    <%= sale.total_price  %>
-</div>
-<% end %>
+  <% @sales.each do |sale| %>
+    <tr>
+      <td>Purchase <%= sale.id %></td>
+      <td><%= sale.total_price %></td>
+      <td><%= sale.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      <td>
+        <%= link_to "View", sale_path(sale) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_16_184517) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_17_114714) do
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "inventory_count"
@@ -19,13 +19,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_16_184517) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sale_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.decimal "price"
+    t.integer "product_id", null: false
+    t.integer "quantity"
+    t.integer "sale_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_sale_items_on_product_id"
+    t.index ["sale_id"], name: "index_sale_items_on_sale_id"
+  end
+
   create_table "sales", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.integer "product_id", null: false
     t.integer "quantity"
     t.decimal "total_price"
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_sales_on_product_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -45,6 +54,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_16_184517) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
-  add_foreign_key "sales", "products"
+  add_foreign_key "sale_items", "products"
+  add_foreign_key "sale_items", "sales"
   add_foreign_key "sessions", "users"
 end

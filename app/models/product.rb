@@ -1,4 +1,4 @@
 class Product < ApplicationRecord
     validates :name, presence: true
-    has_many :sales, dependent: :destroy
+    has_many :sale_items
 end
